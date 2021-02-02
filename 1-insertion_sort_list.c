@@ -9,8 +9,6 @@
  */
 void swap(listint_t *firstNode, listint_t *secondNode, listint_t **head)
 {
-	int tmp;
-
 	if (firstNode == NULL || secondNode == NULL)
 		return;
 	listint_t *firstNodeNext = firstNode->next;
@@ -56,7 +54,7 @@ void swap(listint_t *firstNode, listint_t *secondNode, listint_t **head)
  */
 void insertion_sort_list(listint_t **list)
 {
-	listint_t *head = NULL, *current = NULL, *swapPointer = NULL;
+	listint_t *current = NULL, *swapPointer = NULL;
 	int oldval;
 
 	current = *list;
