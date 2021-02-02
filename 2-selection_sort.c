@@ -28,11 +28,11 @@ void selection_sort(int *array, size_t size)
 {
 	int i, j, min;
 
-	for (i = 0; i < size - 1; i++)
+	for (i = 0; i < (int) size - 1; i++)
 	{
 		min = i;
 		/* search for the min */
-		for (j = i; j < size; j++)
+		for (j = i; j < (int) size; j++)
 		{
 			if (array[j] < array[min])
 				min = j;
