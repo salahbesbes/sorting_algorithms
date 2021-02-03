@@ -1,21 +1,19 @@
 #include "sort.h"
 
 /**
- * swap - swap 2 element in an array
- * @head: head of list
- * @firstNode: pos first node
- * @secondNode: pos second node
- * Return: void
+ * swap - function to swap two nodes in a doubly linked list
+ * @left: left node to swap
+ * @right: right node to swap
  */
-void swap(listint_t *firstNode, listint_t *secondNode, listint_t **head)
+void swap(listint_t *left, listint_t *right)
 {
+
 }
 
 /**
- * insertion_sort_list - insertion sort
- * @list: head list
+ * insertion_sort_list - insertion sort algorithm on a list
+ * @list: list to be sorted
  *
- * Return: void
  */
 void insertion_sort_list(listint_t **list)
 {
