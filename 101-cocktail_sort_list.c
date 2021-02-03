@@ -10,11 +10,12 @@
 void swap(listint_t *firstNode, listint_t *secondNode, listint_t **head)
 {
 
-	if (firstNode == NULL || secondNode == NULL)
-		return;
 	listint_t *firstNodeNext = firstNode->next;
 	listint_t *firstNodePrev = firstNode->prev;
 	listint_t *secondNodeNext = secondNode->next;
+
+	if (firstNode == NULL || secondNode == NULL)
+		return;
 	/* if nodes are adjacent*/
 	if (firstNodeNext == secondNode)
 	{
@@ -32,11 +33,12 @@ void swap(listint_t *firstNode, listint_t *secondNode, listint_t **head)
 }
 void cocktail_sort_list(listint_t **list)
 {
-	int swapped = 1;
+	int swapped;
 	listint_t *current = NULL;
 	listint_t *start = NULL;
 	listint_t *end = NULL;
 
+	swapped = 1;
 	start = *list;
 	while (swapped)
 	{
@@ -64,8 +66,8 @@ void cocktail_sort_list(listint_t **list)
 		/* break if there is no swap swapped will be 0 (sorted list) */
 		if (swapped == 0)
 			break;
-		else /* we suppose there is no more swapping */
-			swapped = 0;
+		/* we suppose there is no more swapping */
+		swapped = 0;
 		/* starting point is the adjacent pos of the greatest item */
 		current = end;
 		while (current)
