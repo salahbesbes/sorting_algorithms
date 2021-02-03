@@ -41,11 +41,12 @@ void cocktail_sort_list(listint_t **list)
 	if (!list || !(*list) || !(*list)->next)
 		return;
 	swapped = 1;
-	start = *list;
+	start = NULL;
+	end = NULL;
 	while (swapped)
 	{
 		swapped = 0;
-		current = start;
+		current = *list;
 		while (current)
 		{
 			if (current->next)
@@ -60,7 +61,7 @@ void cocktail_sort_list(listint_t **list)
 					print_list(*list);
 				}
 			/* we save the adjacent position of the greatest item*/
-			if (current->next == NULL)
+			if (current->next == end)
 				end = current->prev;
 			current = current->next;
 		}
@@ -86,7 +87,7 @@ void cocktail_sort_list(listint_t **list)
 				}
 			/* we save the node adjacent to the greatest node */
 			/* greatest node is always the one to the right */
-			if (current->prev == NULL)
+			if (current->prev == start)
 				start = current->next;
 			current = current->prev;
 		}
