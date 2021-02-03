@@ -1,46 +1,60 @@
 #include "sort.h"
 
 /**
- * swap - function to swap two nodes in a doubly linked list
- * @left: left node to swap
- * @right: right node to swap
+ * swap - swap 2 element in an array
+ * @head: head of list
+ * @firstNode: pos first node
+ * @secondNode: pos second node
+ * Return: void
  */
-void swap(listint_t *left, listint_t *right)
+void swap(listint_t *firstNode, listint_t *secondNode, listint_t **head)
 {
-	if (left->prev != NULL)
-		left->prev->next = right;
-	if (right->next != NULL)
-		right->next->prev = left;
-	left->next = right->next;
-	right->prev = left->prev;
-	left->prev = right;
-	right->next = left;
+	if (firstNode == NULL || secondNode == NULL)
+		return;
+	listint_t *firstNodePrev = NULL;
+	listint_t *secondNodeNext = NULL;
+
+	firstNodePrev = firstNode->prev;
+	secondNodeNext = secondNode->next;
+	/* if nodes are adjacent*/
+	if (firstNodePrev)
+		firstNodePrev->next = secondNode;
+	if (secondNodeNext)
+		secondNodeNext->prev = firstNode;
+	firstNode->next = secondNodeNext;
+	firstNode->prev = secondNode;
+	secondNode->next = firstNode;
+	secondNode->prev = firstNodePrev;
+	if (firstNodePrev == NULL)
+		*head = secondNode;
 }
 
 /**
- * insertion_sort_list - insertion sort algorithm on a list
- * @list: list to be sorted
+ * insertion_sort_list - insertion sort
+ * @list: head list
  *
+ * Return: void
  */
 void insertion_sort_list(listint_t **list)
 {
-	listint_t *i, *j;
+	listint_t *current = NULL, *swapPointer = NULL;
+	int oldval;
 
 	if (!list || !(*list) || !((*list)->next))
 		return;
-	i = (*list)->next;
-	while (i)
+	current = *list;
+	/* start from the second node */
+	while (current)
 	{
-		j = i;
-		while (j->prev && (j->prev)->n > j->n)
+		swapPointer = current->prev;
+		oldval = current->n;
+
+		while (swapPointer && swapPointer->n > oldval)
 		{
-			if (i == j)
-				i = j->prev;
-			if (j->prev == *list)
-				*list = j;
-			swap(j->prev, j);
+			swap(swapPointer, current, list);
 			print_list(*list);
+			swapPointer = current->prev;
 		}
-		i = i->next;
+		current = current->next;
 	}
 }
