@@ -44,12 +44,15 @@ int partition(int *ar, int start, int end, size_t size)
 			print_array(ar, size);
 		}
 	}
-	if (ar[end] <= ar[pivot_index + 1])
+	pivot_index++;
+	if (ar[end] <= ar[pivot_index])
 	{
-		swap(ar, pivot_index + 1, end);
+		if (pivot_index == end)
+			return (pivot_index);
+		swap(ar, pivot_index, end);
 		print_array(ar, size);
 	}
-	return (pivot_index + 1);
+	return (pivot_index);
 }
 
 /**

@@ -40,7 +40,7 @@ void insertion_sort_list(listint_t **list)
 	listint_t *current = NULL, *swapPointer = NULL;
 	int oldval;
 
-	if (!list || !(*list) || !((*list)->next))
+	if (!list || !(*list) || !(*list)->next)
 		return;
 	current = *list;
 	/* start from the second node */
