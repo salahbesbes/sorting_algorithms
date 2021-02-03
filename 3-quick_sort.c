@@ -29,30 +29,29 @@ int partition(int *ar, int start, int end, size_t size)
 	int i, pivot;
 	int pivot_index;
 
-	pivot_index = start;
+	// pivot (Element to be placed at right position)
 	pivot = ar[end];
+
+	pivot_index = (start - 1);  // Index of smaller element
+
 	for (i = start; i < end; i++)
 	{
+		// If current element is smaller than the pivot
 		if (ar[i] <= pivot)
 		{
-			if (i == pivot_index)
-				continue;
-			swap(ar, i, pivot_index);
-			print_array(ar, size);
-			pivot_index++;
-
+			pivot_index++;    // increment index of smaller element
+			swap(ar, pivot_index, i);
+			print_array(ar,size);
 		}
 	}
-	if (pivot <= ar[pivot_index])
+	if (pivot_index < end)
 	{
-		if (pivot_index + 1 == end)
-			return (pivot_index);
-		swap(ar, pivot_index, end);
-		print_array(ar, size);
+		swap(ar, pivot_index + 1, end);
+		print_array(ar,size);
 	}
-
-	return (pivot_index);
+	return (pivot_index + 1);
 }
+
 /**
  * sort - create a partition and recursively sort the main array
  * @array: array

@@ -9,11 +9,11 @@
  */
 void swap(listint_t *firstNode, listint_t *secondNode, listint_t **head)
 {
-	if (firstNode == NULL || secondNode == NULL)
-		return;
 	listint_t *firstNodePrev = NULL;
 	listint_t *secondNodeNext = NULL;
 
+	if (firstNode == NULL || secondNode == NULL)
+		return;
 	firstNodePrev = firstNode->prev;
 	secondNodeNext = secondNode->next;
 	/* if nodes are adjacent*/
