@@ -11,36 +11,19 @@ void swap(listint_t *firstNode, listint_t *secondNode, listint_t **head)
 {
 	if (firstNode == NULL || secondNode == NULL)
 		return;
-	listint_t *firstNodeNext = firstNode->next;
-	listint_t *firstNodePrev = firstNode->prev;
-	listint_t *secondNodeNext = secondNode->next;
-	listint_t *secondNodePrev = secondNode->prev;
+	listint_t *firstNodePrev = NULL;
+	listint_t *secondNodeNext = NULL;
+
+	firstNodePrev = firstNode->prev;
+	secondNodeNext = secondNode->next;
 	/* if nodes are adjacent*/
-	if (firstNodeNext == secondNode)
-	{
-		if (firstNodePrev)
-			firstNodePrev->next = secondNode;
-		if (secondNodeNext)
-			secondNodeNext->prev = firstNode;
-		firstNode->next = secondNodeNext;
-		firstNode->prev = secondNode;
-		secondNode->next = firstNode;
-		secondNode->prev = firstNodePrev;
-		if (firstNodePrev == NULL)
-			*head = secondNode;
-		return;
-	}
-	if (firstNodePrev != NULL)
+	if (firstNodePrev)
 		firstNodePrev->next = secondNode;
-	if (firstNodeNext != NULL)
-		firstNodeNext->prev = secondNode;
-	if (secondNodePrev != NULL)
-		secondNodePrev->next = firstNode;
-	if (secondNodeNext != NULL)
+	if (secondNodeNext)
 		secondNodeNext->prev = firstNode;
 	firstNode->next = secondNodeNext;
-	firstNode->prev = secondNodePrev;
-	secondNode->next = firstNodeNext;
+	firstNode->prev = secondNode;
+	secondNode->next = firstNode;
 	secondNode->prev = firstNodePrev;
 	if (firstNodePrev == NULL)
 		*head = secondNode;
@@ -57,6 +40,8 @@ void insertion_sort_list(listint_t **list)
 	listint_t *current = NULL, *swapPointer = NULL;
 	int oldval;
 
+	if (!list || !(*list) || !((*list)->next))
+		return;
 	current = *list;
 	/* start from the second node */
 	while (current)

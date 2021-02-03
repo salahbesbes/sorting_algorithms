@@ -1,4 +1,5 @@
 #include "sort.h"
+
 /**
  * search_max - search for max in an array
  * @ar: array
@@ -9,7 +10,7 @@ int search_max(int *ar, size_t n)
 {
 	int i, largest = 0;
 
-	for (i = 0; i < n; i++)
+	for (i = 0; i < (int) n; i++)
 	{
 		if (ar[i] > largest)
 			largest = ar[i];
@@ -31,7 +32,7 @@ void counting_sort(int *array, size_t size)
 
 	largest = search_max(array, size);
 	count_Ar = malloc(sizeof(int) * (largest + 1));
-	for (i = 0; i < largest; i++)
+	for (i = 0; i < (size_t) largest; i++)
 		count_Ar[i] = 0;
 
 	for (i = 0; i < size; i++)
@@ -39,7 +40,7 @@ void counting_sort(int *array, size_t size)
 		idx = array[i];
 		count_Ar[idx] = count_Ar[idx] + 1;
 	}
-	for (i = 1; i <= largest; i++)
+	for (i = 1; i <= (size_t) largest; i++)
 		count_Ar[i] += count_Ar[i - 1];
 
 	new_ar = malloc(sizeof(int) * size);

@@ -23,7 +23,7 @@ void swap(int *ar, int pos1, int pos2)
  */
 void shell_sort(int *array, size_t size)
 {
-	int gap, k, i, j;
+	int gap, i, j;
 
 	gap = 1;
 	while (gap < (int) size / 3)

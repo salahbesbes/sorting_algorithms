@@ -24,21 +24,35 @@ void swap(int *ar, int pos1, int pos2)
  * @end: end
  * Return: index of pivot number
  */
-int partition(int *ar, int start, int end)
+int partition(int *ar, int start, int end, size_t size)
 {
 	int i, pivot;
-	int pivot_index = start;
+	int pivot_index;
+	int j;
 
+	j = start - 1;
+	pivot_index = start;
 	pivot = ar[end];
 	for (i = start; i < end; i++)
 	{
 		if (ar[i] <= pivot)
 		{
+			if (i == pivot_index)
+				continue;
 			swap(ar, i, pivot_index);
+			print_array(ar, size);
 			pivot_index++;
+
 		}
 	}
-	swap(ar, pivot_index, end);
+	if (pivot <= ar[pivot_index])
+	{
+		if (pivot_index + 1 == end)
+			return (pivot_index);
+		swap(ar, pivot_index, end);
+		print_array(ar, size);
+	}
+
 	return (pivot_index);
 }
 /**
@@ -56,10 +70,9 @@ void sort(int *array, int start, int end, size_t size)
 
 	if (start < end)
 	{
-		pivot_index = partition(array, start, end);
+		pivot_index = partition(array, start, end, size);
 		sort(array, start, pivot_index - 1, size);
 		sort(array, pivot_index + 1, end, size);
-		print_array(array, size);
 	}
 }
 /**
