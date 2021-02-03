@@ -83,7 +83,7 @@ void cocktail_sort_list(listint_t **list)
 				{
 					/*move back the current pointer by 1*/
 					swap(current, current->prev, list);
-					current = current->prev;
+					current = current->next;
 					/* update swapped flag */
 					swapped = 1;
 					print_list(*list);
