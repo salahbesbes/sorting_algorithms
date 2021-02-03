@@ -28,9 +28,7 @@ int partition(int *ar, int start, int end, size_t size)
 {
 	int i, pivot;
 	int pivot_index;
-	int j;
 
-	j = start - 1;
 	pivot_index = start;
 	pivot = ar[end];
 	for (i = start; i < end; i++)
