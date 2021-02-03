@@ -19,24 +19,5 @@ void swap(listint_t *firstNode, listint_t *secondNode, listint_t **head)
  */
 void insertion_sort_list(listint_t **list)
 {
-	listint_t *current = NULL, *swapPointer = NULL;
-	int oldval;
 
-	if (!list || !(*list) || !((*list)->next))
-		return;
-	current = *list;
-	/* start from the second node */
-	while (current)
-	{
-		swapPointer = current->prev;
-		oldval = current->n;
-
-		while (swapPointer && swapPointer->n > oldval)
-		{
-			swap(swapPointer, current, list);
-			print_list(*list);
-			swapPointer = current->prev;
-		}
-		current = current->next;
-	}
 }
