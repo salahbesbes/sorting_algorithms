@@ -22,6 +22,7 @@ void swap(int *ar, int pos1, int pos2)
  * @ar: ar
  * @start: start
  * @end: end
+ * @size: array size
  * Return: index of pivot number
  */
 int partition(int *ar, int start, int end, size_t size)
@@ -29,25 +30,24 @@ int partition(int *ar, int start, int end, size_t size)
 	int i, pivot;
 	int pivot_index;
 
-	// pivot (Element to be placed at right position)
 	pivot = ar[end];
-
-	pivot_index = (start - 1);  // Index of smaller element
+	pivot_index = (start - 1);
 
 	for (i = start; i < end; i++)
 	{
-		// If current element is smaller than the pivot
 		if (ar[i] <= pivot)
 		{
-			pivot_index++;    // increment index of smaller element
+			pivot_index++;
+			if (i == pivot_index)
+				continue;
 			swap(ar, pivot_index, i);
-			print_array(ar,size);
+			print_array(ar, size);
 		}
 	}
-	if (pivot_index < end)
+	if (ar[end] <= ar[pivot_index + 1])
 	{
 		swap(ar, pivot_index + 1, end);
-		print_array(ar,size);
+		print_array(ar, size);
 	}
 	return (pivot_index + 1);
 }
