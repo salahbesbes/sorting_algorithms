@@ -51,6 +51,7 @@ void counting_sort(int *array, size_t size)
 	{
 		val = array[i];
 		idx = count_Ar[val];
+		count_Ar[val] = count_Ar[val] - 1;
 		idx--;
 		new_ar[idx] = val;
 
