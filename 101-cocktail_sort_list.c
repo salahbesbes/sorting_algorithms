@@ -38,71 +38,43 @@ void swap(listint_t *firstNode, listint_t *secondNode, listint_t **head)
 void cocktail_sort_list(listint_t **list)
 {
 	int swapped;
-	listint_t *current = NULL;
-	listint_t *start = NULL;
-	listint_t *end = NULL;
+	listint_t *current, *start, *end = NULL;
 
 	if (!list || !(*list) || !(*list)->next)
 		return;
-	swapped = 1;
-	start = NULL;
-	end = NULL;
+	swapped = 1, start = NULL, end = NULL;
 	while (swapped)
 	{
-		swapped = 0;
-		current = *list;
+		swapped = 0, current = *list;
 		while (current)
 		{
 			if (current->next)
-				/* if we swap we do some updates */
 				if (current->n > current->next->n)
 				{
 					swap(current, current->next, list);
-					/* move back the current pointer */
 					current = current->prev;
-					/* update swapped flag */
 					swapped++;
 					print_list(*list);
 				}
-			/* we save the adjacent position of the greatest item*/
-			if (current->next == end)
-			{
+			if (current->next == NULL)
 				end = current->prev;
-				break;
-			}
 			current = current->next;
 
 		}
-
-
 		if (swapped == 0)
 			break;
-		/* we suppose there is no more swapping */
-		swapped = 0;
-		/* starting point is the adjacent pos of the greatest item */
-		current = end;
+		swapped = 0, current = end;
 		while (current)
 		{
 			if (current->prev)
-				/* if we swap we do some updates */
 				if (current->prev->n > current->n)
 				{
-					/*move back the current pointer by 1*/
 					swap(current->prev, current, list);
 					current = current->next;
-					/* update swapped flag */
 					swapped++;
 					print_list(*list);
 				}
-			/* we save the node adjacent to the greatest node */
-			/* greatest node is always the one to the right */
-			if (current->prev == start)
-			{
-				start = current->next;
-				break;
-			}
 			current = current->prev;
 		}
-		/* swapped == 0 we won't loop again*/
 	}
 }
