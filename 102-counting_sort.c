@@ -53,7 +53,7 @@ void counting_sort(int *array, size_t size)
 		idx = count_Ar[val];
 		if (idx > 1)
 			count_Ar[val] = count_Ar[val] - 1;
-		new_ar[idx] = val;
+		new_ar[idx -1] = val;
 
 	}
 	for (i = 0; i < size; i++)
