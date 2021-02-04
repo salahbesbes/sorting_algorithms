@@ -58,7 +58,7 @@ void counting_sort(int *array, size_t size)
 	}
 	for (i = 0; i < size; i++)
 		array[i] = new_ar[i];
-	print_array(count_Ar, largest + 1);
+	print_array(count_Ar, largest);
 	free(new_ar);
 	free(count_Ar);
 }
