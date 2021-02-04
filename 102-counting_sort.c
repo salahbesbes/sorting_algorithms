@@ -34,7 +34,7 @@ void counting_sort(int *array, size_t size)
 		return;
 	largest = search_max(array, size);
 	count_Ar = malloc(sizeof(int) * (largest + 1));
-	for (i = 0; i < (size_t) largest; i++)
+	for (i = 0; i < (size_t) largest + 1; i++)
 		count_Ar[i] = 0;
 
 	for (i = 0; i < size; i++)
